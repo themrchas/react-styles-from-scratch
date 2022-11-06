@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+
+import React, { useState} from 'react';
+
 import './App.css';
 
+import UserInput from './components/UserInput';
+import UserDisplay from './components/UserDisplay';
+
 function App() {
+
+  const [nameAndAge, setNameAndAge] = useState([]);
+
+  const addUser = (event) => {
+
+    //Prevnt the page from being re-rendered
+    event.preventDefault();
+
+    let itemToAdd = { name:event.target.username.value, age:event.target.age.value }
+
+    setNameAndAge( (prevState) => {
+
+        return [...prevState,itemToAdd];
+
+    })
+
+
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <UserInput addUser={addUser}/>
+      <UserDisplay users={nameAndAge}/>
+      
     </div>
   );
 }
