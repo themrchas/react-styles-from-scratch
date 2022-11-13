@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
+import React, {} from 'react'
 
 import User from './User';
 
 
 const UserDisplay = props => {
-
-
 
     const renderUsers = (items) => {
 
@@ -13,11 +11,10 @@ const UserDisplay = props => {
 
        return items.map(el => //{
           //  return <User name={el['name']} age={el.age} />
-          <User name={el['name']} age={el.age} />
+          <User key={el['id']} name={el['name']} age={el.age} deleteItem={props.deleteUser} id={el['id']}/>
        );
 
-       // }); 
-    }
+    } //renderUsers
 
 
 
