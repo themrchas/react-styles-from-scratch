@@ -10,7 +10,6 @@ const UserDisplay = props => {
         console.log('in UserDisplay');
 
        return items.map(el => //{
-          //  return <User name={el['name']} age={el.age} />
           <User key={el['id']} name={el['name']} age={el.age} deleteItem={props.deleteUser} id={el['id']}/>
        );
 

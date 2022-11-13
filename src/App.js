@@ -28,15 +28,12 @@ function App() {
 
     let elementIdToDelete =  event.currentTarget.getAttribute('data-id')
 
+      //Remove item in list that has id property matching that of item that was clicked
       setNameAndAge(
-       
-       nameAndAge.filter(el => el.id !== elementIdToDelete )
-
+          nameAndAge.filter(el => el.id !== elementIdToDelete )
       )
      
   } //deleteUser
-
-
 
 
   return (
