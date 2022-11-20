@@ -2,8 +2,10 @@
 
 import React from 'react'
 
-import Input from './UI/Input'
-import Button from './UI/Button'
+import Input from './UI/Input';
+import Button from './UI/Button';
+
+import styles from './UserInput.module.css';
 
 
 const UserInput = props => {
@@ -38,14 +40,17 @@ const UserInput = props => {
 
     return (
         
-      
-      <form onSubmit={checkValidity}>
-       
-            <Input type="text" inputId="username">Username</Input>
-            <Input type="number" inputId="age" min="18" max="99" step="1">Age (Years)</Input>
-            <Button type="submit">Add user to list</Button>
+      <div className={`${styles['user-input']}`} >
+        <form onSubmit={checkValidity}>
         
-        </form>
+            {/*  <Input type="text" inputId="username" className={styles.label}>Username</Input> */}
+            <Input type="text" inputId="username">Username</Input>
+              <Input type="number" inputId="age" min="18" max="99" step="1">Age (Years)</Input>
+              <Button type="submit">Add user to list</Button>
+          
+          </form>
+          </div>
+    
 
     )
 

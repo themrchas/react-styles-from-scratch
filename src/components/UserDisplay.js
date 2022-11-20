@@ -2,6 +2,10 @@ import React, {} from 'react'
 
 import User from './User';
 
+import styles from './UserDisplay.module.css';
+
+
+
 
 const UserDisplay = props => {
 
@@ -19,7 +23,7 @@ const UserDisplay = props => {
 
     return (
 
-        <div>
+        <div className={`${styles['user-display']}`}>
 
             {renderUsers(props.users)}
 

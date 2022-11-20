@@ -39,7 +39,7 @@ function App() {
   return (
     <div>
 
-      <UserInput addUser={addUser} />
+      <UserInput addUser={addUser}     />
       <UserDisplay users={nameAndAge} deleteUser={deleteUser}/>
       
     </div>
