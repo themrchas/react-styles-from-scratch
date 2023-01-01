@@ -1,0 +1,12 @@
+.card {
+
+    /* Note that 'auto' will center horizontally */
+    margin: 5em auto;
+    width: 30rem;
+    max-width: 90%;
+    padding: 2rem;
+    box-sizing: border-box;
+
+    box-shadow: 0px 2px 12px rgba(18, 16, 16, 0.2)
+
+}

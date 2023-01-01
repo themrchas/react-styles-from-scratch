@@ -1,14 +1,18 @@
 //The form used to input data
 
-import React from 'react'
+import React, {useState} from 'react'
 
 import Input from './UI/Input';
 import Button from './UI/Button';
+import Card from './UI/Card';
+import ErrorModal from './UI/ErrorModal';
 
 import styles from './UserInput.module.css';
 
 
 const UserInput = props => {
+
+    const [error,setError] = useState();
 
 
     const checkValidity = e => {
@@ -16,12 +20,17 @@ const UserInput = props => {
       //Prevent the default behavior for a form submit as we need to check input data
       e.preventDefault(); 
 
-      if (e.target.username.value.length === 0  || e.target.age.value.length === 0) {
+      //if (e.target.username.value.length === 0  || e.target.age.value.length === 0) {
 
-          alert("Invalid input - Username cannot be empty and age must be greater than 18")
+        if (e.target.username.value.length === 0) {
+          //alert("Invalid input - Username cannot be empty and age must be greater than 18")
+          setError({title: "Error", message:"The name cannot be empty"})
           
          }
-      else {
+         else if (e.target.age.value.length === 0) {
+          setError({title: "Error", message:"The age cannot be empty"});
+         }
+         else {
 
         //Grab input values
         let userName = e.target.username.value;
@@ -33,14 +42,22 @@ const UserInput = props => {
 
         props.addUser(userName,age);
 
-      }
+        }
     
     } //checkValidity
+
+    //Handler used to clear error modal via state
+    const clearInputError = _ => {
+      setError(null)
+    } //clearError
     
 
     return (
-        
-      <div className={`${styles['user-input']}`} >
+     <div>
+
+     {error && <ErrorModal title={error.title} message={error.message} clearError={clearInputError}></ErrorModal>}
+
+     <Card className={styles.input}>
         <form onSubmit={checkValidity}>
         
             {/*  <Input type="text" inputId="username" className={styles.label}>Username</Input> */}
@@ -49,9 +66,8 @@ const UserInput = props => {
               <Button type="submit">Add user to list</Button>
           
           </form>
-          </div>
-    
-
+      </Card>
+    </div>
     )
 
 

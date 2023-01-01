@@ -1,5 +1,6 @@
 import React from 'react'
 
+import styles from './User.module.css';
 
 
 const User = props => {
@@ -10,7 +11,7 @@ const User = props => {
 
       
     return (
-        <div onClick={props.deleteItem} data-id={props.id}>
+        <div onClick={props.deleteItem} data-id={props.id} className={styles.displayItem}>
             {formatData(props.name, props.age)}
         </div>
     )

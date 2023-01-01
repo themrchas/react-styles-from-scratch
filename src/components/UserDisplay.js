@@ -1,11 +1,9 @@
 import React, {} from 'react'
 
 import User from './User';
+import Card from '../components/UI/Card';
 
 import styles from './UserDisplay.module.css';
-
-
-
 
 const UserDisplay = props => {
 
@@ -14,7 +12,7 @@ const UserDisplay = props => {
         console.log('in UserDisplay');
 
        return items.map(el => //{
-          <User key={el['id']} name={el['name']} age={el.age} deleteItem={props.deleteUser} id={el['id']}/>
+          <User key={el['id']} name={el['name']} age={el.age} deleteItem={props.deleteUser} id={el['id']} />
        );
 
     } //renderUsers
@@ -23,12 +21,13 @@ const UserDisplay = props => {
 
     return (
 
-        <div className={`${styles['user-display']}`}>
+        <Card>
+        <div id = {styles.userDisplayContainer}>
 
             {renderUsers(props.users)}
 
-
         </div>
+        </Card>
 
     )
 

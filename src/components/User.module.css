@@ -1,0 +1,12 @@
+.displayItem {
+
+    /* Note that 'auto' will center horizontally */
+    margin: 1rem 0;
+    background: #8b005d;
+    padding: 1rem 2rem;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.26);
+    color:white;
+
+}
+
+
