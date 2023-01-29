@@ -1,10 +1,11 @@
 
-import React, { useState} from 'react';
+import React, { useState, Fragment} from 'react';
 
 import './App.css';
 
 import UserInput from './components/UserInput';
 import UserDisplay from './components/UserDisplay';
+//import Wrapper from './components/UI/Wrapper';
 
 function App() {
 
@@ -37,12 +38,12 @@ function App() {
 
 
   return (
-    <div>
+    <Fragment>
 
       <UserInput addUser={addUser}     />
       <UserDisplay users={nameAndAge} deleteUser={deleteUser}/>
       
-    </div>
+    </Fragment>
   );
 }
 
