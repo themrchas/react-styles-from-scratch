@@ -1,6 +1,6 @@
 //The form used to input data
 
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 
 import Input from './UI/Input';
 import Button from './UI/Button';
@@ -13,12 +13,14 @@ import styles from './UserInput.module.css';
 const UserInput = props => {
 
     const [error,setError] = useState();
-
+    const refUserName = useRef();
+    const refUserAge = useRef();
 
     const checkValidity = e => {
 
       //Prevent the default behavior for a form submit as we need to check input data
       e.preventDefault(); 
+      console.log(refUserName);
 
       //if (e.target.username.value.length === 0  || e.target.age.value.length === 0) {
 
@@ -61,9 +63,13 @@ const UserInput = props => {
         <form onSubmit={checkValidity}>
         
             {/*  <Input type="text" inputId="username" className={styles.label}>Username</Input> */}
-            <Input type="text" inputId="username">Username</Input>
-              <Input type="number" inputId="age" min="18" max="99" step="1">Age (Years)</Input>
-              <Button type="submit">Add user to list</Button>
+              <label for="username">Enter user name</label>
+              <input type="text" id="username" ref={refUserName}></input>
+              <label for="age">Enter Age</label>
+              <input type="number" id="age" min="18" max="99" step="1" ref={refUserAge}></input>
+              <div>
+                <Button type="submit">Add user to list</Button>
+              </div>
           
           </form>
       </Card>
