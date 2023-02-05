@@ -2,7 +2,7 @@
 
 import React, {useState, useRef} from 'react'
 
-import Input from './UI/Input';
+//import Input from './UI/Input';
 import Button from './UI/Button';
 import Card from './UI/Card';
 import ErrorModal from './UI/ErrorModal';
@@ -22,27 +22,24 @@ const UserInput = props => {
       e.preventDefault(); 
       console.log(refUserName);
 
-      //if (e.target.username.value.length === 0  || e.target.age.value.length === 0) {
+      //Grab the name of name and age objects using the ref
+      let userName = refUserName.current;
+      let userAge = refUserAge.current;
 
-        if (e.target.username.value.length === 0) {
-          //alert("Invalid input - Username cannot be empty and age must be greater than 18")
-          setError({title: "Error", message:"The name cannot be empty"})
-          
-         }
-         else if (e.target.age.value.length === 0) {
-          setError({title: "Error", message:"The age cannot be empty"});
-         }
-         else {
+      if (userName.value.length === 0) {
 
-        //Grab input values
-        let userName = e.target.username.value;
-        let age = e.target.age.value;
+        setError({ title: "Error", message: "The name cannot be empty" })
 
-        //Clear input values since we know that we have good values
-        e.target.username.value = "";
-        e.target.age.value = "";
+      }
 
-        props.addUser(userName,age);
+      else if (userAge.value.length === 0) {
+        setError({ title: "Error", message: "The age cannot be empty" });
+      }
+      else {
+
+        props.addUser(userName.value, userAge.value);
+
+        userName.value = userAge.value = "";
 
         }
     
